@@ -20,7 +20,7 @@ func NewErrFailedValidation(format string, fields map[string]interface{}, option
 		errorz.Status(http.StatusBadRequest),
 		errorz.Prefix("failed validation"),
 		newErrFailedValidationOption(fields),
-		errorz.Skip())...)
+		errorz.SkipPackage())...)
 }
 
 // WrapErrFailedValidation wraps an error as failed validation error.
@@ -34,7 +34,7 @@ func WrapErrFailedValidation(err error, options ...errorz.Option) error {
 		errorz.Status(http.StatusBadRequest),
 		errorz.Prefix("failed validation"),
 		newErrFailedValidationOption(nil),
-		errorz.Skip())...)
+		errorz.SkipPackage())...)
 }
 
 func newErrFailedValidationOption(extraFields map[string]interface{}) errorz.Option {
